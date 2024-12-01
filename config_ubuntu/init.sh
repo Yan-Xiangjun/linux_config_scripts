@@ -17,7 +17,7 @@ systemctl daemon-reload
 
 
 sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
-sudo apt purge ibus
+sudo apt purge ibus apport
 sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
 sudo apt install libgsettings-qt1
 sudo apt install ./sogoupinyin_4.2.1.145_amd64.deb
