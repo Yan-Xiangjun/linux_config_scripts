@@ -3,7 +3,7 @@ set -e
 set -x
 bash ../base/base.sh
 
-sudo apt-fast install -y ntpdate gonme-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu fcitx konsole dolphin
+sudo apt-fast install -y ntpdate fcitx konsole dolphin
 sudo ntpdate time.windows.com
 sudo hwclock --localtime --systohc
 
@@ -14,8 +14,9 @@ sudo update-grub
 # 解决关机慢的问题
 sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
 systemctl daemon-reload
-
-
+if [[ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]]; then
+    sudo apt-fast install -y gonme-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu
+fi
 sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
 sudo apt purge ibus apport
 sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
