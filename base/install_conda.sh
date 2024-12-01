@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+set -x
 if [ ! -d ~/miniconda3 ]; then
     mkdir -p ~/miniconda3
 fi

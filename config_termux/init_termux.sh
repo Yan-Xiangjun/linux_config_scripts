@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 termux-change-repo
 pkg update
 pkg upgrade -y
