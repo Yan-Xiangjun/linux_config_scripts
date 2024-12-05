@@ -15,4 +15,4 @@ custom_channels:
 EOF
 conda clean -i -y
 sed -i '/bash ~\/conda_change_repo.sh/d' ~/.bashrc
-conda install anaconda-navigator -y
+conda install -y anaconda-navigator

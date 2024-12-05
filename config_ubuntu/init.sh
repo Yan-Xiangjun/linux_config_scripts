@@ -18,10 +18,10 @@ if [[ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]]; then
     sudo apt-fast install -y gonme-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu
 fi
 sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
-sudo apt purge ibus apport
-sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
-sudo apt install libgsettings-qt1
-sudo apt install ./sogoupinyin_4.2.1.145_amd64.deb
+sudo apt purge -y ibus apport
+sudo apt-fast install -y libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
+sudo apt-fast install -y libgsettings-qt1
+sudo apt install -y ./sogoupinyin_4.2.1.145_amd64.deb
 
 
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
