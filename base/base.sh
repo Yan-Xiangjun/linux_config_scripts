@@ -7,7 +7,7 @@ sudo apt update
 sudo add-apt-repository -y ppa:apt-fast/stable
 sudo apt install -y apt-fast
 sudo apt-fast upgrade -y
-sudo apt-fast install -y build-essential cmake git wget python3-pip python3-venv python-is-python3 fonts-noto-cjk tldr unrar unzip
+sudo apt-fast install -y build-essential cmake git wget python3-pip python3-venv python-is-python3 fonts-noto-cjk tldr unrar unzip zsh
 
 echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$(whoami)
 
