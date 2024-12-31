@@ -11,7 +11,7 @@ sudo apt-fast install -y build-essential cmake git wget python3-pip python3-venv
 
 echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$(whoami)
 
-sudo pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip
+sudo python3 -m pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip
 sudo pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple
-pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip
+python3 -m pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip
 pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple

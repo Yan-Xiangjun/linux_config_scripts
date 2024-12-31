@@ -3,7 +3,7 @@ set -e
 set -x
 bash ../base/base.sh
 
-sudo cat >/etc/wsl.conf <<EOF
+sudo tee /etc/wsl.conf <<EOF
 [boot]
 systemd=true
 EOF
