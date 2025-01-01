@@ -29,6 +29,7 @@ echo '可安装的驱动：'
 ubuntu-drivers devices
 read -p '输入要安装的显卡驱动：' driver
 sudo apt-fast install -y $driver
+chsh -s /bin/zsh
 
 echo '完成，请重启电脑！'
 read -s -n 1 -p "按任意键退出..."
