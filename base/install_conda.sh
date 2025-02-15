@@ -22,9 +22,6 @@ custom_channels:
   conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
   pytorch: https://mirrors.ustc.edu.cn/anaconda/cloud
 EOF
-conda clean -i -y
-conda install -y anaconda-navigator
+~/miniconda3/bin/conda clean -i -y
 
 echo '完成！'
-read -s -n 1 -p "按任意键退出..."
-echo ''

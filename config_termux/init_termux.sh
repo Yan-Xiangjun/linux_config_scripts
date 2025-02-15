@@ -2,11 +2,9 @@
 set -e
 set -x
 termux-change-repo
-pkg update
-pkg upgrade -y
 
-pkg install build-essential cmake ninja binutils libandroid-spawn git wget python python-pip python-numpy python-scipy rust openssh x11-repo termux-services -y
-pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple
+pkg install  python-numpy python-scipy rust  
+
 mkdir -vp ${CARGO_HOME:-$HOME/.cargo}
 
 cat << EOF | tee -a ${CARGO_HOME:-$HOME/.cargo}/config.toml

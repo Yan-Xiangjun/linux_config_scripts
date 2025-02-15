@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 set -x
-bash ../base/base.sh
 
 sudo apt-fast install -y ntpdate fcitx konsole dolphin
 sudo ntpdate time.windows.com
