@@ -34,6 +34,7 @@ commands = {
         'sudo apt-fast install -y ntpdate', 'sudo ntpdate time.windows.com',
         'sudo hwclock --localtime --systohc'
     ],
+    '配置ubuntu-desktop': ['bash ./config_ubuntu_desktop.sh'],
     '安装oh-my-zsh': ['sh -c "$(curl -fsSL https://install.ohmyz.sh/)"'],
     '配置zsh': ['bash ./config_zsh.sh'],
 }

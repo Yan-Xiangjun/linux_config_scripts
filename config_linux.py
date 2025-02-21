@@ -1,4 +1,5 @@
 import curses
+from commands import commands
 
 
 def my_func(selected_items):
@@ -14,7 +15,7 @@ def main(stdscr):
     stdscr.keypad(True)
 
     # 菜单项和选中状态
-    menu = ['A1', 'B2', 'C3']
+    menu = list(commands.keys())
     selected = [False] * len(menu)
     current = 0
 
@@ -23,7 +24,7 @@ def main(stdscr):
         height, width = stdscr.getmaxyx()
 
         # 在屏幕上方显示使用说明
-        instructions = ["上下方向键 - 切换菜单项", "空格键     - 选择/取消选择菜单项", "回车键     - 确认选中，执行操作"]
+        instructions = ["上下方向键 - 切换菜单项，空格键 - 选择/取消选择，回车键 - 确定"]
         for i, line in enumerate(instructions):
             stdscr.addstr(i, 0, line)
 
@@ -62,4 +63,9 @@ def main(stdscr):
 
 
 if __name__ == '__main__':
-    curses.wrapper(main)
+    try:
+        curses.wrapper(main)
+    except Exception as e:
+        print('[Error]', e)
+        if str(e) == 'addwstr() returned ERR':
+            print('出现错误！请尝试调大终端窗口后重试！')

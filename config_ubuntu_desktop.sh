@@ -16,7 +16,9 @@ sudo apt purge -y apport
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 echo '可安装的驱动：'
 ubuntu-drivers devices
-read -p '输入要安装的显卡驱动：' driver
-sudo apt-fast install -y $driver
+read -p '输入要安装的显卡驱动，按回车键跳过：' driver
+if [ -n "$driver" ]; then
+    sudo apt-fast install -y $driver
+fi
 
 echo '完成，请重启电脑！'
