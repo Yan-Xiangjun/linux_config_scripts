@@ -1,11 +1,15 @@
 import curses
 from commands import commands
+import subprocess
 
 
-def my_func(selected_items):
-    # 开发者可以自定义逻辑，这里简单打印选中的菜单项
+def run_commands(selected_items):
     for item in selected_items:
         print(item)
+        cmd_lst = commands[item]
+        for cmd in cmd_lst:
+            print(f"执行：{cmd}")
+            subprocess.run(commands[item], shell=True, check=True)
     input("按回车键退出...")  # 暂停程序，便于查看输出
 
 
@@ -59,7 +63,7 @@ def main(stdscr):
 
     # 收集选中的菜单项（保持菜单在列表中的顺序）
     chosen = [item for i, item in enumerate(menu) if selected[i]]
-    my_func(chosen)
+    run_commands(chosen)
 
 
 if __name__ == '__main__':
