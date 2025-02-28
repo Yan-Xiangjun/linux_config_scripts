@@ -1,3 +1,5 @@
-from commands import commands
+import os
+import shutil
 
-print()
+print(os.getenv("HOME"))
+print(shutil.which("apt"))

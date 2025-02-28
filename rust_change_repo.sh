@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 mkdir -vp ${CARGO_HOME:-$HOME/.cargo}
 

@@ -1,15 +1,29 @@
 import curses
 from commands import commands
 import subprocess
+import os
+import shutil
 
 
 def run_commands(selected_items):
+    is_termux = True if os.getenv("HOME") == '/data/data/com.termux/files/home' else False
+    has_apt_fast = True if shutil.which("apt-fast") else False
+
     for item in selected_items:
         print(item)
         cmd_lst = commands[item]
         for cmd in cmd_lst:
+            if is_termux:
+                cmd = cmd.lstrip('sudo ')
+            if not has_apt_fast:
+                cmd = cmd.replace('apt-fast', 'apt')
             print(f"执行：{cmd}")
-            subprocess.run(commands[item], shell=True, check=True)
+            try:
+                subprocess.run(cmd, shell=True, check=True)
+            except subprocess.CalledProcessError as e:
+                print(e)
+                input("按回车键退出...")
+                return
     input("按回车键退出...")  # 暂停程序，便于查看输出
 
 

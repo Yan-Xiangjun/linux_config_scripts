@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 # 开关机显示提示信息
 sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub

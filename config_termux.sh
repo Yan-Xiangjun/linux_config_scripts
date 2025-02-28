@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 sed -i 's/# terminal-cursor-style = block/terminal-cursor-style = bar/' ~/.termux/termux.properties
 if ! grep -Fxq "terminal-onclick-url-open=true" ~/.termux/termux.properties; then

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 sudo tee /etc/wsl.conf <<EOF
 [boot]
