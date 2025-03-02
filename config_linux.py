@@ -7,16 +7,16 @@ import shutil
 
 def run_commands(selected_items):
     is_termux = True if os.getenv("HOME") == '/data/data/com.termux/files/home' else False
-    has_apt_fast = True if shutil.which("apt-fast") else False
 
     for item in selected_items:
+        has_apt_fast = True if shutil.which("apt-fast") else False
         print(item)
         cmd_lst = commands[item]
         for cmd in cmd_lst:
             if is_termux:
                 cmd = cmd.lstrip('sudo ')
             if not has_apt_fast:
-                cmd = cmd.replace('apt-fast', 'apt')
+                cmd = cmd.replace('apt-fast ', 'apt ')
             print(f"执行：{cmd}")
             try:
                 subprocess.run(cmd, shell=True, check=True)

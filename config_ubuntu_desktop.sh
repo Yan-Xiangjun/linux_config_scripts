@@ -10,7 +10,7 @@ sudo update-grub
 sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
 systemctl daemon-reload
 if [[ "$XDG_CURRENT_DESKTOP" == "ubuntu:GNOME" ]]; then
-    sudo apt-fast install -y gonme-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu
+    sudo apt-fast install -y gnome-tweaks gnome-shell-extensions gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu
 fi
 sudo apt purge -y apport
 
