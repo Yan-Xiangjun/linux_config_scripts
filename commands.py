@@ -12,7 +12,7 @@ commands = {
     ],
     '更新软件': ["sudo apt-fast upgrade -y"],
     '安装基础软件': ['sudo apt-fast install -y build-essential cmake binutils git wget unrar unzip zsh'],
-    'ubuntu安装补充软件': ['sudo apt-fast install -y fonts-noto-cjk tldr'],
+    'ubuntu安装补充软件': ['sudo apt-fast install -y fonts-noto-cjk tldr', 'sudo apt purge -y snaped'],
     'termux安装补充软件': ['apt install -y ninja libandroid-spawn openssh x11-repo termux-services'],
     'ubuntu配置python并换源': [
         'sudo apt-fast install -y python3-pip python3-venv python-is-python3',
