@@ -1,13 +1,11 @@
 import curses
-from commands import commands
+from commands import *
 import subprocess
 import os
 import shutil
 
 
 def run_commands(selected_items):
-    is_termux = True if os.getenv("HOME") == '/data/data/com.termux/files/home' else False
-
     for item in selected_items:
         has_apt_fast = True if shutil.which("apt-fast") else False
         print(item)
@@ -42,7 +40,7 @@ def main(stdscr):
         height, width = stdscr.getmaxyx()
 
         # 在屏幕上方显示使用说明
-        instructions = ["上下方向键 - 切换菜单项，空格键 - 选择/取消选择，回车键 - 确定"]
+        instructions = ["↑↓ - 切换菜单项，空格 - 选择/取消，回车 - 确定"]
         for i, line in enumerate(instructions):
             stdscr.addstr(i, 0, line)
 
