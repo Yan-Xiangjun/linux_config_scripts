@@ -2,6 +2,8 @@ import os
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 is_termux = True if os.getenv("HOME") == '/data/data/com.termux/files/home' else False
+is_wsl = True if 'WSL_DISTRO_NAME' in os.environ else False
+is_desktop = True if os.environ.get('XDG_CURRENT_DESKTOP') else False
 
 commands = {
     'ubuntu换源': [
@@ -16,28 +18,28 @@ commands = {
     '安装基础软件': ['sudo apt-fast install -y build-essential cmake binutils git wget unrar unzip zsh'],
 }
 if not is_termux:
-    commands['ubuntu安装补充软件'] = [
-        'sudo apt-fast install -y fonts-noto-cjk tldr', 'sudo apt purge -y snaped'
-    ]
+    commands.update({
+        'ubuntu安装补充软件': [
+            'sudo apt-fast install -y fonts-noto-cjk tldr', 'sudo apt purge -y snaped'
+        ],
+        'ubuntu配置python并换源': [
+            'sudo apt-fast install -y python3-pip python3-venv python-is-python3',
+            'python3 -m pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip',
+            'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
+        ]
+    })
 else:
-    commands['termux安装补充软件'] = [
-        'apt install -y ninja libandroid-spawn openssh x11-repo termux-services'
-    ]
-if not is_termux:
-    commands['ubuntu配置python并换源'] = [
-        'sudo apt-fast install -y python3-pip python3-venv python-is-python3',
-        'python3 -m pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip',
-        'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
-    ]
-else:
-    commands['termux安装python并换源'] = [
-        'apt install -y python python-pip',
-        'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
-    ],
-if not is_termux:
-    commands['wsl开启systemd'] = [f'bash {DIR}/wsl_systemd.sh']
-else:
-    commands['配置termux'] = [f'bash {DIR}/config_termux.sh']
+    commands.update({
+        'termux安装补充软件': ['apt install -y ninja libandroid-spawn openssh x11-repo termux-services'],
+        'termux安装python并换源': [
+            'apt install -y python python-pip',
+            'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
+        ],
+        '配置termux': [f'bash {DIR}/config_termux.sh']
+    })
+if is_wsl:
+    commands.update({'wsl开启systemd': [f'bash {DIR}/wsl_systemd.sh']})
+
 commands.update({
     '安装miniconda': [f'bash {DIR}/install_conda.sh'],
     'rust换源': [f'bash {DIR}/rust_change_repo.sh'],
@@ -52,8 +54,9 @@ if not is_termux:
             'sudo apt-fast install -y ntpdate', 'sudo ntpdate time.windows.com',
             'sudo hwclock --localtime --systohc'
         ],
-        '配置ubuntu-desktop': [f'bash {DIR}/config_ubuntu_desktop.sh'],
     })
+if is_desktop:
+    commands.update({'配置ubuntu-desktop': [f'bash {DIR}/config_ubuntu_desktop.sh']})
 commands.update({
     '安装oh-my-zsh': ['sh -c "$(curl -fsSL https://install.ohmyz.sh/)"'],
     '配置zsh': [f'bash {DIR}/config_zsh.sh'],
