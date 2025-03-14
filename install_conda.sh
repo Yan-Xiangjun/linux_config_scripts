@@ -15,12 +15,19 @@ channels:
   - defaults
 show_channel_urls: true
 default_channels:
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/r
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/msys2
+  - https://mirrors.sustech.edu.cn/anaconda/pkgs/main
+  - https://mirrors.sustech.edu.cn/anaconda/pkgs/free
+  - https://mirrors.sustech.edu.cn/anaconda/pkgs/r
+  - https://mirrors.sustech.edu.cn/anaconda/pkgs/pro
+  - https://mirrors.sustech.edu.cn/anaconda/pkgs/msys2
 custom_channels:
-  conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
-  pytorch: https://mirrors.ustc.edu.cn/anaconda/cloud
+  conda-forge: https://mirrors.sustech.edu.cn/anaconda/cloud
+  msys2: https://mirrors.sustech.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.sustech.edu.cn/anaconda/cloud
+  menpo: https://mirrors.sustech.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.sustech.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.sustech.edu.cn/anaconda/cloud
+  nvidia: https://mirrors.sustech.edu.cn/anaconda-extra/cloud
 EOF
 ~/miniconda3/bin/conda clean -i -y
 
