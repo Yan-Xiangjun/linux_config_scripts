@@ -11,8 +11,8 @@ is_rust = True if shutil.which('rustc') else False
 
 commands = {
     'ubuntu换源': [
-        "sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list",
-        "sudo sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list"
+        "sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.cernet.edu.cn@g' /etc/apt/sources.list",
+        "sudo sed -i 's/security.ubuntu.com/mirrors.cernet.edu.cn/g' /etc/apt/sources.list"
     ],
     '更新包索引': ["sudo apt update"],
     '安装apt-fast': [
@@ -24,12 +24,12 @@ commands = {
     'termux安装补充软件': ['apt install -y ninja libandroid-spawn openssh x11-repo termux-services'],
     'ubuntu配置python并换源': [
         'sudo apt-fast install -y python3-pip python3-venv python-is-python3',
-        'python3 -m pip install -U -i https://mirrors.ustc.edu.cn/pypi/simple pip',
-        'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
+        'python3 -m pip install -U -i https://mirrors.cernet.edu.cn/pypi/web/simple pip',
+        'pip config set global.index-url https://mirrors.cernet.edu.cn/pypi/web/simple'
     ],
     'termux安装python并换源': [
         'apt install -y python python-pip',
-        'pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple'
+        'pip config set global.index-url https://mirrors.cernet.edu.cn/pypi/web/simple'
     ],
     '配置termux': [f'bash {DIR}/config_termux.sh'],
     'wsl开启systemd': [f'bash {DIR}/wsl_systemd.sh'],
