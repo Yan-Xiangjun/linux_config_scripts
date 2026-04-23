@@ -37,6 +37,8 @@ commands = {
     '配置termux': [f'bash {DIR}/config_termux.sh'],
     'wsl开启systemd': [f'bash {DIR}/wsl_systemd.sh'],
     '安装miniconda': [f'bash {DIR}/install_conda.sh'],
+    '防止系统休眠':
+    ['sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target'],
     'rust换源': [f'bash {DIR}/rust_change_repo.sh'],
     'golang换源': ['go env -w GO111MODULE=on', 'go env -w GOPROXY=https://goproxy.cn,direct'],
     'sudo改为不再需要输入密码':
@@ -47,6 +49,8 @@ commands = {
 }
 if is_termux:
     commands = {k: v for k, v in commands.items() if 'ubuntu' not in k and 'wsl' not in k}
+    commands = {k: v for k, v in commands.items() if 'miniconda' not in k}
+    commands = {k: v for k, v in commands.items() if '休眠' not in k}
 else:
     commands = {k: v for k, v in commands.items() if 'termux' not in k}
     if not is_desktop:
